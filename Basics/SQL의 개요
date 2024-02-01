@@ -19,7 +19,7 @@
     -DB에서 data를 읽거나 쓰고, 수정하기 위한 용도로 사용
   SQL 종류
     -DDL : Definition - 테이블, 스키마
-    -DML : Manipultae - data 수정 입력.. 
+    -DML : Manipultae - data 검색,수정 등의 처리
     -DCL : Control - 권한 부여 뺏기
 
 03 SQL 활용
