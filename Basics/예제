@@ -1,0 +1,4 @@
+03 select문에 추가적으로 필요한 키워드
+예제1 SELECT ID AS CLERCK_ID, GRADE AS PERF FROM EMP;
+->다른 열들은 이름그대로 가져오려면 열이름 그대로 같이 나열해주면 됨
+실습1
