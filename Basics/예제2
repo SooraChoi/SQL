@@ -125,12 +125,32 @@ GROUP BY SEG
 SELECT TMP1,TMP2,TMP3
 FROM CUSTOMERS TMP1, ORDERS TMP2, EMPLOYEE TMP3
 WHERE TMP1.CUST_ID=TMP2.CUST_ID, TMP2.EMP_ID=TMP3.EMP_ID;
+#SELECT에 KEY값 빠짐
+#WHERE의 경우 AND로 연결해줘야하는데 나열했음
 
 SELECT TMP1, TMP2, TMP3
 FROM CUSTOMERS TMP1 INNER JOIN ORDERS TMP2 ON TMP1.CUST_ID=TMP2.CUST_ID
-     ORDERS         INNER JOIN EMPLOYEE TMP3 ON TMP2.EMP_ID=TMP3.EMP_ID;\
+     ORDERS         INNER JOIN EMPLOYEE TMP3 ON TMP2.EMP_ID=TMP3.EMP_ID;
+#SELECT KEY값 빠짐
+#INNER JOING으로 연결할때: 처음 주인공 앞에 잡고 거기에다가 INNER JOIN으로 하나씩 붙이면 됨. WHERE처럼 주이곤 이름을 여러번 불러줄 필요가 없음
+#OMG 잘못생각 - 애초에 TMP1과2 연결 후 TMP2와 연결
+-> 생각해보니까 꼭 테이블 이름을 한번씩 붙여서 나열해준 후에, ON에서 KEY값 동일하다고 알려줘야하는 게 아니잖아
+-> FROM/WHERE조건절은 FROM에서 테이블&별칭 다 나열한 후 WHERE에서 결합조건 차례로 AND로 연결하는데
+-> FROM+INNER JOIN +ON 에서는 첫번째꺼는 테이블&별칭 써준 후, [INNER JOIN 누구(별칭!)] 로 테이블 등장시키면서, [ON TMP3.KEY = TMP2.KEY]로 어떤 테이블이랑 쪼인할 것인지 알려줌
 
 SELECT TMP1.CUST_ID, TMP1. CUST_NM, TMP2.ORDER_ID, TMP2.EMP_ID, TMP3.NM
-FROM CUSTOMERS TMP1 INNER JOIN ORDERS TMP2 ON TMP1.CUST_ID=TMP2.CUST_ID
+FROM CUSTOMERS TMP1 INNER JOIN ORDERS TMP2   ON TMP1.CUST_ID=TMP2.CUST_ID
                     INNER JOIN EMPLOYEE TMP3 ON TMP2.EMP_ID=TMP3.EMP_ID;
+
+외부조인
+#왼쪽 테이블 기준으로 조인하는 방법 - 키값중 왼쪽 테이블에 존재하는데, 오른쪽 테이블에 존재하지 않아? NULL값으로 반환
+SELECT 별칭1.열이름1, 별칭2.열이름2
+FROM 테이블명 별칭1 LEFT (OUTER) JOIN 테이블명2 별칭2
+                   ON                별칭1.KEY = 별칭2.KEY;
+
+#오른쪽 테이블 기준으로 조인
+SELECT 별칭1.열이름, 별칭2.열이름...
+FROM 테이블명.별칭1 RIGHT (OUTER)JOIN 테이블명.별칭2 ON 별칭1.KEY=별칭2.KEY
+
+
 
