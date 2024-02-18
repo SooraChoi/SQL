@@ -175,3 +175,12 @@ GROUP BY ORDER_FLG;
 
 #그룹바이에서 약어 써도 되는건지 의문 -> 안되니까 얄위치 1로!!
 
+실습
+01
+#고민. INNER로 공통을 찾는게 아니라면.. 수신테이블이 있는 사람을 찾는거니가 두번째 테이블을 메인으로 삼자
+SELECT TMP1.SSN, TMP2.MOBILE_NO, COUNT(*)AS CNT
+FROM RCPT_ACCT TMP1 LEFT OUTER JOIN CUST_PARTY TMP2 ON TMP1.SSN = TMP2.SSN
+GROUP BY TMP1.SSN, TMP2.MOBILE_NO
+ORDER BY 3;
+
+
