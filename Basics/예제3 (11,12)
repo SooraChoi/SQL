@@ -1,4 +1,5 @@
 10 하위쿼리
+
 FROM 하위쿼리
 
 에제01 ★★★
@@ -37,3 +38,27 @@ COUNT, GROUPD으로 몇 개인지 체크
 ...... 아님.. 1,0줘서 SUM으로 마무리
 
 #의문: 1,0줘서 SUM VS COUNT, GROUP
+
+
+WHERE하위쿼리
+
+예제01
+
+앞에서 FROM하위쿼리에서는 FROM 뒤에 테이블명들이 오는만큼, 필요한 정보 골라서 TMP2로 만들어놓고 그걸 JOIN했어
+WHERE 하위쿼리를 활용하려면..
+WHERE ~ IN (이 표!)로 하면 될 것 같아서, 오히려 이 상황에서는 FROM하위쿼리에서 TMP1과 TMP2 조인하고, TMP2에 존재하면 O, 없으면 X로 하고 이름 지정한 후에 또 1,0각각 부여하고 더하는 것보다
+WHERE ~ IN (TMP2 펴)면 원하는 거 뭐뭐 출력한다. 하면 더 심플한듯
+뭐를 출력하려고 하는 상황이냐에 따라 다른거려나?
+
+SELECT TMP1.SSN, TMP1.PARTY_NM, TMP1.TEL_NO, TMP1.MOBILE_NO #조인안해서 별칭 필요없나? 조인해도 별칭안써도 괜찮기는 하지만..
+FROM CUST_PARTY TMP1
+WHERE TMP1.SSN IN ( SELECT DISTINCT SSN FROM CARD_ACCT WHERE CC_GRADE IN ('1','2') AND CLOSE_DT IS NULL )
+
+SELECT SSN, PARTY_NM, TEL_NO, MOBILE_NO
+FROM CUST_PARTY
+WHERE SSN IN ( SELECT DISTINCT SSN FROM CARD_ACCT WHERE CC_GRADE IN ('1','2') AND CLOSE_DT IS NULL )
+
+정답
+SELECT *
+FROM CUST_PARTY
+WHERE SSN IN (SELECT DISTINCT SSN FROM CARD_ACCT WHERE CLOSE_DT IS NULL AND CC_GRADE IN ('1','2');
