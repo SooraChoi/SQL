@@ -34,3 +34,6 @@ TMP2: SELECT DISTINCT SSN / WHERE~
 #그 목록에 있냐 없냐에 따라 표로 나타내는게 메인
 SELECT TMP2.SSN 에 있으면 'O'를 주고, 아니면 'X'를 부여하고
 COUNT, GROUPD으로 몇 개인지 체크
+...... 아님.. 1,0줘서 SUM으로 마무리
+
+#의문: 1,0줘서 SUM VS COUNT, GROUP
