@@ -1,9 +1,36 @@
 10 하위쿼리
 FROM 하위쿼리
 
-에제01
+에제01 ★★★
 SELECT CASE WHEN TMP2.SSN IS NOT NULL THEN 'O' ELSE 'X' END AS CC_HOLDER, COUNT(*) AS SNT
 FROM CUST_PARTY TMP1 
     LEFT JOIN (SELECT SSN, COUNT(*) AS CNT FROM CARD_ACCT WHERE CC_GRADE IN (1,2) AND CLOSE_DT IS NULL GROUP BY 1) TMP2
     ON TMP1.SSN = TMP2.SSN
 GROUP BY 1;
+
+SELECT CASE WHEN SNT >= 1 THEN 'O' ELSE 'X' AS CC_HOLDER, COUNT(*) AS SNT
+FROM CUST_PART TMP1 LEFT OUTER JOIN ( SELECT SSN, SUM( CASE WHEN CC_GRADE IN ('1','2') AND CLOSE_DT IS NULL THEN 1 ELSE 0 END ) FROM CARD_ACCT GROUP BY 1 ) TMP2
+                    ON TMP1.SSN = TMP2.SSN
+GROUP BY 1;
+
+
+
+#처음에는, TMP2에 존재하는 이름이면 다 O처리하고 존재하는 총개수 세면 된다는 맥락으로 접근 - 앞 예제에서 조인할때 전에 있던 표의 개수 셀 때 전에 있던 테이블에 존재하는 애들 NOT NULL해서 1처리하고 이동하는 쪽은 NULLㅇ해서 0처리 했던 것
+#두번째는 TMP2에서 사람당 유효한 카드개수가 몇개인지 센 다음에, 명단에 JOIN하고 카드가 한 개 이상인 사람들을 O 에 넣어서 명수 세는 방식으로 접근.
+#TMP2 생각해보니 개수까지 필요없지 않나? 하나라도 있으면 됨.. 그래서 중복에 대한 DISTINCT?
+
+다 틀렸다..
+
+SELECT CASE WHEN TMP2.SSN IS NOT NULL THEN 'O' ELSE 'X' END AS CC_HOLDER, SUM(CASE WHEN TMP2.SSN IS NOT NULL THEN 1 ELSE 0 END) AS CNT
+FROM CUST_PARTY TMP1 LEFT OUTER JOIN ( SELECT DISTINCT SSN FROM CARD_ACCT WHERE CLOSE_DT IS NULL AND CC_GRADE IN ('1', '2') ) TMP2
+                        ON TMP1.SSN = TMP2.SSN
+GROUP BY 1;
+
+#더 단순하게 접근..?
+#TMP1 <- TMP2 
+TMP2: SELECT DISTINCT SSN / WHERE~
+단순하게 WHERE 조건절로 조건 만족시키는 SSN만 남김. (=조건만족한 SSN한줄만 남음)
+개수 상관없어서 DISTINCT SSN으로
+#그 목록에 있냐 없냐에 따라 표로 나타내는게 메인
+SELECT TMP2.SSN 에 있으면 'O'를 주고, 아니면 'X'를 부여하고
+COUNT, GROUPD으로 몇 개인지 체크
