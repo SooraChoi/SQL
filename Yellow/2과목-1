@@ -1,0 +1,17 @@
+# ALTER <-> INSERT, UPDATE
+
+ALTER (열추가, 데이터 구조 변경) 는
+DROP, CREATE, RENAME 과 함께 DDL
+
+INSERT (행 삽입), UPDATE (특정 데이터 수정) 은
+DELETE, SELECT 과 함꼐 DML
+
+# DCL: GRANT, REVOKE, TCL: COMMIT, ROLLBACK
+
+# WHERE 절에서 집계함수 사용불가
+# ALIAS명은 SELECT절,ORDER절
+#NULL
+1) 연산
+2) 집계함수
+3) 공백 VS NULL
+4) 관련함수 (ISNULL NVL COALESCE NULLIF)
