@@ -12,3 +12,5 @@
     - 인라인 뷰  (FROM 절에 서브쿼리로 임시 테이블 뚝딱)
     
   * 뷰(VIEW) (CREATE VIEW A AS SELECT~; 가상의 테이블 생성)
+
+제2절 집합 연산자
