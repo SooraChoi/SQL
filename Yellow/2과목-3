@@ -20,3 +20,9 @@
 # FOREIGN KEY 옵션(생성 시 정의, 변경 불가 -> 재생성)
   1) ON DELETE CASCADE  : 부모 데이터 삭제 시 자식 데이터 함께 삭제
   2) ON DELETE SET NULL : 부모 데이터 삭제 시 자식 데이터의 참조값은 NULL로 수정 
+
+# 중복제거
+  1) UNIQUE : 열 중복 제거
+            -UNIQUE 제약 조건은 테이블 생성 시 열(Column)을 정의할 때나 ALTER TABLE 문을 사용하여 이미 존재하는 열에 사용
+  2) DISTINCT : 행 중복 제거
+            -SELECT 문에서 DISTINCT를 사용하면 결과 집합에서 중복된 행이 제거
