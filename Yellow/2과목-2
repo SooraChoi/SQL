@@ -14,3 +14,9 @@
   * 뷰(VIEW) (CREATE VIEW A AS SELECT~; 가상의 테이블 생성)
 
 제2절 집합 연산자
+
+
+
+# DCL GRANT
+    -GRANT SELECT, UPDATE ON A_User.TB_A TO B_User;
+      *WHERE, UPDATE 작업 수행하려면 SELECT, UPDATE 권한 받아야 
