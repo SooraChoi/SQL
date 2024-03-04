@@ -26,7 +26,7 @@ DELETE, SELECT 과 함꼐 DML
         ORACLE: NULL이 가장큰값
         SQL SERVER:    가장작은값
 
-4) 공백 VS NULL
+4) 공백 VS NULL 
         ORACLE: 공백과 NULL 구분O
         SQL SERVER:         구분X. EQUL
 
