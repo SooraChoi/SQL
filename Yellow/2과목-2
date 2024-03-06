@@ -20,3 +20,8 @@
 # DCL GRANT
     -GRANT SELECT, UPDATE ON A_User.TB_A TO B_User;
       *WHERE, UPDATE 작업 수행하려면 SELECT, UPDATE 권한 받아야 
+
+
+#~70번 스터디
+서브쿼리에 order by 올 수 없음
+group by에 서브쿼리 올 수 없음
