@@ -1,15 +1,20 @@
 # DDL ALTER
   1) 제약조건 주기
-        ALTER TABLE table명 ADD CONSTRAINT 제약조건명 제약조건
-        제약조건: PK, FK, UNIQUE, NOT NULL, CHECK
+        ALTER TABLE table명 ADD CONSTRAINT 제약조건'명' 제약조건 ( 대상칼럼명 );
+        (제약조건: PK, FK, UNIQUE, NOT NULL, CHECK)
+        - CREATE 내에 있는 문장인 경우, CONSTRAINT 부터 시작해도 괜찮다.
+
 
   2) 여러 개의 칼럼 동시에 수정하기 (테이블 칼럼에 대한 정의 변경)
-      [SQL SERVER]
+      [SQL SERVER] - (하나에 한줄씩)
         ALTER TABLE table명 ALTER COLUMN 칼럼명 데이터형태 (NOT)NULL;
       [ORACLE]
         ALTER TABLE table명 MODIFY       칼럼명1 데이터유형 [디폴트식] [NOT NULL], 칼럼명2 데이터 유형 [DEFAULT 식] NOT NULL;
 
    ※NOT NULL -> NOT NULL: NOT NULL이라고 표시 안해주면 NULL로 돌아간다.
+
+  3) 테이블에서 해다ㅇ 칼럼을 삭제하고 자 할 때
+        ALTER ~ DROP COLUMN (ddl의 drop 과 다르다)
 
 # 트랜잭션의 특징
     - 원자성 → 모두성공, 모두실패
@@ -35,3 +40,12 @@
   - A-Z, a-z, 0-9, _, $, # 문자만 허용된다.
 
 # Oracle 에서 사용되는 표준 데이터 타입으로 가장 적절하지 못한 것은 : Text <-> Char, Varchar2, Numeric
+
+# 106번 merge using
+# 108번 외래키에 대한 설명
+# 109번 unique, 후보키
+# 113번 참조동작 (cascade, restrict, automatic, dependent)
+# 115,116 insert into
+  -테이블 생성할 때, 열 값이 not null로 설정됐으면 insert into 로 값 넣어줄 때 꼭 같이 넣어줘야 한다
+
+# 날짜형도 숫자로 넣어줘야한다. '980304'가 아니라 980304
