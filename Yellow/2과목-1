@@ -36,3 +36,17 @@ DELETE, SELECT 과 함꼐 DML
  GROUP BY 없으면 아무거나
  GROUP BY 있으면, 열이름으로 정렬하는 경우, GROUP BY에 나온 열이름만
  OR 집계함수
+
+# 13번 To_DATE
+# Replace(a,b) a열에서 b를 제거
+# 28번 order by 뒤에 열이름 말고 case when 나오는 경우
+
+# 35번
+JOIN
+-일반적으로 조인은 pk와 fk 값의 연관성에 의해 성립된다.
+-equi join은 조인에 관여하는 테이블 간의 칼럼 값들이 정확하게 일치하는 경우에 사용되는 방법이다.
+-equi join은 '=' 에 의해서만 수행되며, 그 이외의 비교 연산자를 사용하는 경우에는 모든 non equi join이다.
+-대부분 non equi join을 수행할 수 있지만, 때로는 설계상의 이유로 수행이 불가능한 경우도 있다.
+
+# 42번 USING, NATURAL JOIN 은 JOIN 칼럼에 대해서 별칭이나 테이블명 같은 접두사를 붙일 수 없다고 한다..
+# 44번 왜 단말기ID도 다 NULL로 변하지?
