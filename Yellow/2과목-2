@@ -25,3 +25,6 @@
 #~70번 스터디
 서브쿼리에 order by 올 수 없음
 group by에 서브쿼리 올 수 없음
+
+
+# ROLLUP / CUBE / GROUPING SETS
