@@ -39,23 +39,19 @@
   - 칼럼 뒤에 데이터 유형은 꼭 지정되어야 한다.
   - A-Z, a-z, 0-9, _, $, # 문자만 허용된다.
 
-# Oracle 에서 사용되는 표준 데이터 타입으로 가장 적절하지 못한 것은 : Text <-> Char, Varchar2, Numeric
-
 # 106번 merge using ★★★★★
-
-# 108번 외래키에 대한 설명
-# 109번 unique, 후보키
-# 113번 참조동작 (cascade, restrict, automatic, dependent)
-# 115,116 insert into
-  -테이블 생성할 때, 열 값이 not null로 설정됐으면 insert into 로 값 넣어줄 때 꼭 같이 넣어줘야 한다
 
 # 날짜형도 숫자로 넣어줘야한다. '980304'가 아니라 980304
 
-
-# 외래키: null 값 가질 수 있다. 한 테이블에 하나 이상 생성할 수 있다. 참조 무결성 제약을 받을 수 있다.
-# 기본키가 이미 있는 상태에서, Unique 로 지정된 열은 후보키라고 볼 수 있다. (unique -> 후보키 -> 기본키)
+# (108) 외래키: null 값 가질 수 있다. 한 테이블에 하나 이상 생성할 수 있다. 참조 무결성 제약을 받을 수 있다.
+# (109) 기본키가 이미 있는 상태에서, Unique 로 지정된 열은 후보키라고 볼 수 있다. (unique -> 후보키 -> 기본키)
     - (대체키는 후보키 중 선정이 안된것들)
     - (대리키(surrogate Key)는 인공키라고 하기도 하는데, 복합키가 너무 많아서 복잡하거나 불편할 경우, 인위적으로 식별자를 추가해서 사용하는 것을 말하고, 이것은 성능을 위한 것임)
-# 오라클: number / sql server: numeric
-# 참조동작 (referential action)
-
+# 오라클: number / sql server: numeric (Oracle 에서 사용되는 표준 데이터 타입으로 가장 적절하지 못한 것은 : Text <-> Char, Varchar2, Numeric)
+# (113) 참조동작 (referential action) ★★ 정리
+# 115, 116 : insert into ★★★
+  -테이블 생성할 때, 열 값이 not null로 설정됐으면 insert into 로 값 넣어줄 때 꼭 같이 넣어줘야 한다
+# 119, 121번 취소 어쩌구 ★★★★ - truncate, drop, delete
+# transaction : 데이터베이스의 논리적 연산 단위
+# 승리건수 높은 순으로 3위까지 출력하되, 3위의 승리건수가 동일한 팀이 있다면 함께 출력하기
+# 126번 ★★★
